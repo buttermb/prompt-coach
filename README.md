@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.png" alt="Prompt Coach — Better prompts. Better next steps." width="100%">
+  <img src="hero.png" alt="Prompt Coach — Better prompts. Better next steps." width="100%">
 </p>
 
 <p align="center">
@@ -108,9 +108,8 @@ prompt-coach/
 ├── EXAMPLES.md
 ├── EVALUATION.md
 ├── CONTRIBUTING.md
-├── assets/
-│   ├── hero.png
-│   └── logo.png
+├── hero.png
+├── logo.png
 └── prompt-coach/
     ├── SKILL.md
     └── agents/openai.yaml
