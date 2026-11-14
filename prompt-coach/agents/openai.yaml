@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prompt Coach"
+  short_description: "Improve prompts and choose the right workflow"
+  default_prompt: "Use $prompt-coach to improve my prompt and choose one-shot or staged execution."
