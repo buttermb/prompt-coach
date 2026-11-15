@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="hero.png" alt="Prompt Coach — Better prompts. Better next steps." width="100%">
+  <img src="hero.png" alt="Prompt Coach: Better prompts. Better next steps." width="100%">
 </p>
 
 <p align="center">
-  <strong>A prompt strategist, not a thesaurus.</strong><br>
-  Turn a rough request into a better first prompt—and the right next steps.
+  <strong>Get more out of the model you're already using.</strong><br>
+  A better starting prompt, plus follow-ups when they actually help.
 </p>
 
 <p align="center">
@@ -19,19 +19,21 @@
 
 ---
 
-## Same model. A better approach.
+## Why I made this
 
-Sometimes a model's first answer is merely okay. A well-targeted follow-up can make it much more useful. But repeating “make it better” is not a strategy—and three prompts are not always better than one.
+The idea is pretty simple. You give a model a prompt, get something back, and it's just okay. Then two or three follow-ups later, the output is actually good. Same model, much better result.
 
-**Prompt Coach helps choose the smallest useful workflow for the actual task.** It improves the starting instructions, recommends task-specific follow-ups when they matter, and adapts those follow-ups to the output you bring back.
+I wanted a way to get there with less guessing. Something that looks at what I'm trying to do and says: use this prompt first, then this follow-up if you need it. Or just do it in one shot if a better starting prompt is enough.
 
-It optimizes for **the final result**, not longer prompts or fancy language. Keep your chosen model. Keep your intent. Improve the approach.
+That's Prompt Coach.
 
-> Prompt Coach is a portable Markdown skill, not a hosted app or a model. It does not execute your underlying task by default, and it cannot guarantee that a cheaper model will match a more capable one.
+**The goal is a better final result with the least extra work.** Not turning every request into a giant prompt or making you go through three rounds for no reason.
+
+It's a Markdown skill you give to an assistant. It helps you write the prompts; it doesn't do the underlying task by default. You keep using whichever model you want.
 
 ## Quick start
 
-After loading the skill, paste:
+Load the skill using one of the [install options below](#install), then paste this:
 
 ```text
 Use Prompt Coach.
@@ -45,7 +47,9 @@ Give me the best starting prompt. Include up to two follow-ups only
 if they would materially improve the result.
 ```
 
-**Already have a weak answer?** Bring the original request and the output:
+You don't have to fill out every field. Start with what you have.
+
+Already tried a prompt and don't like the answer? Bring both back:
 
 ```text
 Use Prompt Coach. Here is my original request and the model's answer.
@@ -53,36 +57,26 @@ Give me the next prompt that fixes the biggest remaining weakness.
 Preserve what already works. If it is good enough, tell me to stop.
 ```
 
-You do not need to fill every field. A rough idea is enough to begin; genuinely missing inputs are flagged rather than invented.
+That second part matters. A follow-up based on the actual output is more useful than guessing what will go wrong before you've even tried it.
 
-## What you get
+## What it gives you
 
-| Situation | Coach's approach |
-| --- | --- |
-| A straightforward rewrite | One concise, copy-ready prompt |
-| A task with a meaningful dependency | Two or three stages, with a purpose for each |
-| A promising but weak first answer | A targeted follow-up based on the actual output |
-| Missing sources, files or access | A precise gap, not fabricated context |
-| A result that meets the goal | Stop instead of polishing forever |
+- **One prompt** when the task can reasonably be done in one shot.
+- **Two or three steps** when splitting the work has a real purpose.
+- **A targeted next prompt** when you bring back an answer that needs work.
+- **A clear missing input** when the problem is missing context, files or access.
+- **A stopping point** when the result already does what you need.
 
-### The working loop
+The default is short: a recommendation, a copy-ready starting prompt, and up to two conditional follow-ups. More steps are possible for genuinely complex work, but I don't want extra steps to be the default.
 
-**Understand → Frame → Try → Inspect → Improve only what matters**
-
-1. Identify the desired outcome and likely failure point.
-2. Preserve constraints and define observable success checks.
-3. Write the first usable prompt.
-4. Add stages only when their expected benefit justifies the extra work.
-5. Use the actual result to fix the largest remaining gap.
-
-The default response is short: an approach recommendation, a starting prompt, and at most two conditional follow-ups. Complex workflows can be longer when the task truly needs it.
+Basically, fix the biggest thing that's holding the output back. Keep what works. Then stop.
 
 ## Install
 
 ### Option A · Any chat model, no installation
 
 1. Open [`prompt-coach/SKILL.md`](prompt-coach/SKILL.md).
-2. Copy the instructions below the YAML header (the first `---` block) into a fresh conversation.
+2. Copy the instructions below the YAML header (the block between the first two `---` lines) into a fresh conversation.
 3. Add your task using the quick-start template above.
 
 This is manual use for that conversation, not a persistent install. Your chat provider's normal limits and charges still apply.
@@ -96,7 +90,7 @@ This is manual use for that conversation, not a persistent install. Your chat pr
 2. Import or copy the inner `prompt-coach/` folder using your assistant's supported skill-installation flow. Keep `SKILL.md` inside it.
 3. Start or refresh the session if your host requires it, then invoke **Prompt Coach** by name or with the host's skill selector.
 
-Invocation syntax and install locations vary by product. Some hosts use `$prompt-coach`, others use a skill menu or natural language. This repository does not register itself with any platform or promise automatic loading in every chat mode.
+Invocation syntax and install locations vary by product. Some hosts use `$prompt-coach`, others use a skill menu or natural language. This repo doesn't register itself with a platform or automatically load in every chat mode.
 
 <details>
 <summary><strong>Repository layout</strong></summary>
@@ -118,30 +112,32 @@ prompt-coach/
 `agents/openai.yaml` is optional UI metadata for compatible hosts. The core instructions live in `SKILL.md`.
 </details>
 
-## Designed for real work
+## A few things to try it on
 
-- **Writing:** keep the correct audience, context and natural voice.
-- **Coding:** respect current state, ownership, evidence and action boundaries.
-- **Research:** separate observations from assumptions and require source-grounded checks.
-- **Visual briefs:** specify references, exact copy, dimensions and final deliverables.
-- **Estimates:** preserve units, time windows and the actual cost basis.
+Writing, code, research, visual briefs, estimates. The useful details change with the task: audience and voice for writing, existing code and boundaries for coding, sources for research, references and dimensions for visual work.
 
-See [six synthetic examples](EXAMPLES.md) for inputs and expected behavior.
+I've included [six made-up examples](EXAMPLES.md) so you can see the intended behavior without anyone's private conversations being in the repo.
 
-## Honest limits
+## What I'm not claiming
 
-Prompting cannot replace missing evidence, permissions, tools or model capabilities. Extra turns can add cost, latency and mistakes. Self-review is not independent verification.
+I want this to help you get more from the model you're already using, including cheaper models. That doesn't mean it can make every model equally capable. A better prompt can't supply missing evidence, tools or permissions.
 
-The skill has received limited behavioral smoke testing, **not a comparative performance benchmark**. No percentage improvement or model-equivalence claim is made. [Evaluation guide →](EVALUATION.md)
+Extra rounds can cost more and sometimes make things worse. And asking a model to check itself isn't independent verification.
 
-## Privacy & permissions
+This has had limited behavioral smoke testing, **not a comparative benchmark**. There are no measured savings or model-equivalence claims here. The [evaluation guide](EVALUATION.md) lays out how to compare results.
 
-This package has no API client, telemetry, dependencies or automatic uploads. Your chosen model/service still processes what you submit. Do not include secrets or unnecessary private history. Improving a prompt does not grant permission to send messages, spend money, publish or change systems.
+## Privacy and permissions
 
-## Contribute
+There's no API client, telemetry, dependencies or automatic uploading in this package. Your chosen assistant still processes whatever you paste into it, so leave secrets and unnecessary private history out.
 
-Useful improvements start with a real failure, not more rules. Share a minimal synthetic or redacted example, the expected outcome and what went wrong. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Improving a prompt also doesn't give an assistant permission to send messages, spend money, publish things or change your systems.
+
+## Want to improve it?
+
+Send a small example of where it falls short, what you expected, and what happened. Made-up or properly redacted examples only, please.
+
+I'd rather fix a real failure than keep adding rules just because they sound useful. [Contribution notes](CONTRIBUTING.md).
 
 ## License
 
-[MIT](LICENSE). Original project branding was created with AI assistance. No affiliation with or endorsement by model providers is implied.
+[MIT](LICENSE). The original branding was made with AI assistance. This project isn't affiliated with or endorsed by any model provider.
